@@ -1,0 +1,33 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+heatSource
+{
+    type            scalarSemiImplicitSource;  // Tipo da fonte
+    active          true;                      // Ativa o termo fonte
+    //selectionMode   all;                       // Aplica o termo em todo o domínio
+    scalarSemiImplicitSourceCoeffs
+    {
+        selectionMode   all;
+	volumeMode      absolute;              // Modo de aplicação: W/m³
+        injectionRateSuSp
+        {
+            h           (1000 0);             // Termo fonte explícito (W/m³)
+        }
+    }
+}
+
