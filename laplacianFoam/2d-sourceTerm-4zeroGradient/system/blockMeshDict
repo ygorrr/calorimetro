@@ -1,0 +1,93 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+
+convertToMeters 1.0; // Unidade de comprimento (1.0 significa que usamos metros)
+
+vertices
+(
+    ( 0.0  0.0  0.0) // Vértice 0
+    ( 1.0  0.0  0.0) // Vértice 1
+    ( 1.0  1.0  0.0) // Vértice 2
+    ( 0.0  1.0  0.0) // Vértice 3
+    ( 0.0  0.0  0.1) // Vértice 4
+    ( 1.0  0.0  0.1) // Vértice 5
+    ( 1.0  1.0  0.1) // Vértice 6
+    ( 0.0  1.0  0.1) // Vértice 7
+);
+
+blocks
+(
+    hex (0 1 2 3 4 5 6 7) (10 10 1) simpleGrading (1 1 1)
+    // (10 10 10): //Número de células em cada direção (x, y, z)
+    // simpleGrading (1 1 1): Refinamento uniforme em todas as direções
+);
+
+edges
+(
+    // Nenhuma aresta curva é necessária, pois todas as arestas são retas
+);
+
+boundary
+(
+    // Definição das condições de contorno
+    left
+    {
+        type patch;
+        faces
+        (
+            (0 4 7 3)
+        );
+    }
+    right
+    {
+        type patch;
+        faces
+        (
+            (1 2 6 5)
+        );
+    }
+
+    top
+    {
+        type patch;
+        faces
+        (
+            (3 7 6 2)
+        );
+    }
+    bottom
+    {
+	type patch;
+	faces
+	(
+            (0 1 5 4)
+	);
+    }
+//    front
+//    {
+//        type patch;
+//        faces
+//        (
+//            (4 5 6 7)            
+//        );
+//    }
+//    back
+//    {
+//        type patch;
+//	faces
+//	(
+//	    (0 3 2 1)
+//  	);
+//   }
+);
+
+mergePatchPairs
+(
+    // Nenhuma fusão de patches é necessária para este exemplo
+);
+
