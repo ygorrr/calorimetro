@@ -1,0 +1,25 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvOptions;
+}
+
+heatSource
+{
+    type            scalarSemiImplicitSource;
+    active          true;
+
+    scalarSemiImplicitSourceCoeffs
+    {
+        selectionMode   all; // Aplica o termo fonte em todo o domínio
+        fieldNames      (T); // Campo ao qual o termo se aplica
+        volumeMode 	absolute; // Define o termo em [W/m³]
+	sources
+        {
+            T           (1e-5 1); // Geração de calor uniforme [W/m³]
+        }
+    }
+}
+
