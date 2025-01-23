@@ -11,7 +11,7 @@ Condições de contorno:
 
 $$\begin{align}
 x=0: \qquad &\frac{\partial T}{\partial x}=0\\
-x=1: \qquad &\frac{\partial T}{\partial x}=0\
+x=1: \qquad &\frac{\partial T}{\partial x}=0\\
 y=0: \qquad &\frac{\partial T}{\partial y}=0\\
 y=1: \qquad &\frac{\partial T}{\partial y}=0
 \end{align}$$
