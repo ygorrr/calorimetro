@@ -1,0 +1,25 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvOptions;
+}
+
+heatSource
+{
+    type            scalarSemiImplicitSource;
+    active          yes;
+
+    scalarSemiImplicitSourceCoeffs
+    {
+        selectionMode   all;
+        volumeMode      absolute;
+        injectionRateSuSp
+        {
+            T	1000*exp(-pow((time()-1),2)/(2*pow(0.1,2))); 
+        }
+    }
+} 
+
+
